@@ -1,8 +1,15 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import type { AppProps } from 'next/app';
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+import { BookProvider } from '../contexts/BookContext';
+
+function MyApp({
+ Component, pageProps,
+}: AppProps) {
+ return (
+   <BookProvider>
+     <Component {...pageProps} />
+   </BookProvider>
+ );
 }
 
-export default MyApp
+export default MyApp;
