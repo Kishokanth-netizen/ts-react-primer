@@ -13,7 +13,7 @@ const InputBox = ({
   searchForBook,
 }: InputBoxProps) => {
     
-  const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setBookTitle(event.target.value);
   };
 
@@ -36,7 +36,7 @@ const InputBox = ({
           ref={inputRef}
           placeholder="Enter title"
           value={bookTitle}
-          onChange={handleOnChange}
+          onChange={handleChange}
         />
         <input onClick={handleSubmit} value="Search" type="submit" />
       </form>

@@ -1,6 +1,7 @@
 import { 
  createContext, 
- useReducer 
+ useReducer,
+ ReactNode
 } from "react";
 import { AxiosInstance } from "../instances/AxiosInstance";
 import {
@@ -62,7 +63,7 @@ const reducer = (
   }
 }
 
-export const BookProvider = ({ children }: { children: React.ReactNode }) => {
+export const BookProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const searchForTitle = async (title: string) => {
@@ -73,9 +74,9 @@ export const BookProvider = ({ children }: { children: React.ReactNode }) => {
 
       const {
         data: { docs },
-      } = await AxiosInstance.get<SearchResultData>("search.json?title=", {
+      } = await AxiosInstance.get<SearchResultData>("search.json", {
         params: {
-          title: title,
+          title,
         },
       });
 
